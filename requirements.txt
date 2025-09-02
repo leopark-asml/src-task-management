@@ -2,4 +2,5 @@ fastapi
 uvicorn
 pyodbc
 pandas
+Pillow
 python-dotenv
