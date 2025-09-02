@@ -19,10 +19,10 @@ app = FastAPI()
 def get_connection():
     return pyodbc.connect(
         f"DRIVER={{ODBC Driver 18 for SQL Server}};"
-        f"SERVER={os.getenv('DB_SERVER')};"
-        f"DATABASE={os.getenv('DB_NAME')};"
-        f"UID={os.getenv('DB_USER')};"
-        f"PWD={os.getenv('DB_PASSWORD')};"
+        f"SERVER={os.getenv('upgrade-src-todolist.database.windows.net')};"
+        f"DATABASE={os.getenv('Upgrade-SRC-Todolist')};"
+        f"UID={os.getenv('jpark56')};"
+        f"PWD={os.getenv('990506qw!?')};"
         "Encrypt=yes;"
         "TrustServerCertificate=no;"
         "Connection Timeout=30;"
