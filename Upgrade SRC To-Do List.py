@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 import requests
 from datetime import datetime
 
-BASE_URL = "https://your-api-endpoint.com"  # API의 기본 URL
+BASE_URL = "https://src-task-management.onrender.com/"  # API의 기본 URL
 
 def api_get(endpoint):
     response = requests.get(f"{BASE_URL}/{endpoint}")
