@@ -6,31 +6,32 @@ from tkinterdnd2 import DND_FILES, TkinterDnD
 import os
 from datetime import datetime
 
-# Azure SQL Database 연결 정보
-server = 'upgrade-src-todolist.database.windows.net'
-database = 'Upgrade-SRC-Todolist'
-username = 'jpark56'
-password = '990506qw!?'
-driver = '{ODBC Driver 18 for SQL Server}'  # 설치된 드라이버 이름
 
-def connect_to_database():
+import tkinter as tk
+from tkinter import messagebox
+import requests
+
+
+import tkinter as tk
+from tkinter import messagebox
+import requests
+
+def fetch_data():
     try:
-        conn_str = (
-            "DRIVER={ODBC Driver 18 for SQL Server};"
-            "SERVER=upgrade-src-todolist.database.windows.net,1433;"
-            "DATABASE=Upgrade-SRC-Todolist;"
-            "UID=jpark56;"
-            "PWD=990506qw!?;"
-            "Encrypt=yes;"
-            "TrustServerCertificate=no;"
-            "Connection Timeout=30;"
-        )
-        conn = pyodbc.connect(conn_str)
-        print("Connection successful!")
-        return conn
-    except pyodbc.Error as e:
-        print("Connection failed:", e)
-        return None
+        response = requests.get("https://src-task-management.onrender.com/data")
+        data = response.json()
+        messagebox.showinfo("데이터", str(data))
+    except Exception as e:
+        messagebox.showerror("오류", str(e))
+
+root = tk.Tk()
+root.title("API 데이터 조회")
+
+btn = tk.Button(root, text="데이터 가져오기", command=fetch_data)
+btn.pack(pady=20)
+
+root.mainloop()
+
 
 
 def initialize_database():
